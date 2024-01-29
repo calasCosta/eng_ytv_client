@@ -1,0 +1,60 @@
+.hero-section {
+    width: 100%;
+    height: 90vh;
+    padding: 0;
+    
+
+    .main-div-inside {
+        width: 90%;
+        height: 100%;
+        margin: auto;
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        gap: 2em;
+
+        .word-of-the-day-div {
+            width: 300px;
+            //max-height: 300px;
+            box-shadow: 0 0 20px rgba(196, 192, 192, 0.61);
+            border-radius: 10px;
+            padding: 1.5em;
+            text-align: left;
+            gap: 2em;
+            
+            h1 {
+                text-align: center;
+            }
+        }
+
+        .learning-image {
+          width: 100%;
+          height: 100%;
+        }
+
+        .down-arrown {
+            position: absolute;
+            bottom: 80px;
+            animation-name: down-arrown;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            opacity: 0.1;
+          }
+      
+          @keyframes down-arrown {
+            50% {
+              bottom: 40px;
+              opacity: 0.8;
+            }
+          }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .hero-section {
+        .main-div-inside {
+          flex-direction: column;   
+        }
+    }
+}

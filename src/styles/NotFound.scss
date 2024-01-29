@@ -1,0 +1,38 @@
+.not-found-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    margin: 2%;
+
+    max-height: 70vh;
+
+    img {
+        width: 50%;
+        height: 75%;
+    }
+
+    .home-page {
+        border-radius: 10px;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        box-shadow:  0 0 10px 2px rgb(212, 204, 204);
+    }
+
+    .home-page:hover{
+        box-shadow:  0 0 10px 2px rgb(131, 126, 126); 
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .not-found-div{
+        min-height: 75vh;
+    
+        img {
+            width: 80%;
+            height: 80%;
+        }
+    }
+}

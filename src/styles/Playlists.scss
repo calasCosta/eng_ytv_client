@@ -1,0 +1,157 @@
+.playlists{
+    width: 100%;
+    min-height: 50vh;
+    padding: 10px 0;
+    margin-top: 4%;
+
+    .playlists-inside-div {
+        width: 90%;
+        margin: auto;
+        background-color: rgb(255, 255, 255);
+        padding: 2% 0;
+        border-radius: 25px;
+        box-shadow: 0 0 10px 0 rgba(236, 236, 236, 0.699);
+
+        h2{
+            text-align: center;
+        }
+        
+    
+        div{
+            width: 90%;
+            margin: auto; 
+            padding-top: 2%;
+            text-align: center;
+            vertical-align: top;
+            
+            .playlist {
+                width: fit-content;
+                height: fit-content;
+                display: inline-block;
+                position: relative;
+                margin: 1.5%;
+                border-radius: 10px;
+                box-shadow: 8px 8px 0px rgba(184, 182, 182, 0.479);
+            
+                text-decoration: none;
+                color: black;
+            
+                .playlist-div {
+                    width: 300px;
+                    height: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+            
+                    .options {
+                        width: 30px;
+                        height: fit-content;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        opacity: 0.8;
+                
+                        .buttons {
+                            z-index: 100;
+                            
+                            button {
+                                transition: 0.8;
+                                border-style: none;
+                                background: none !important;
+                            }
+                
+                            .editButton {
+                                font-size: 16px;
+                            }
+                
+                            .deleteButton {
+                                color: red;
+                            }
+                        }
+                
+                        .buttons button:hover{
+                            cursor:pointer;
+                            opacity: 0.5;
+                        }
+                    }
+                
+                    .options:hover {
+                        opacity: 1;
+                    }
+            
+                    .playlist-title { 
+            
+                    }
+            
+                    .edit-playlist-div{
+                        width: fit-content;
+                        height: 30px;
+                        
+                    }
+            
+                    .playlist-title-input { 
+                        border: none;
+                        border-bottom: 1px solid rgb(240, 231, 231);    
+                    } 
+            
+                    .playlist-title-input:focus{ 
+                       outline: none;
+                       border-bottom-color: rgb(117, 172, 172);
+                    }
+                }
+            
+            
+                
+            }
+            
+            .playlist:hover{
+                border-radius: 10px;
+                box-shadow: 8px 8px 0 rgba(73, 199, 248, 0.397);
+            }
+        }
+    }
+
+    .signin-first {
+        width: 90%;
+        min-height: 50vh;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .create-playlist {
+        width: 300px;
+        padding: 10px;
+        margin: 0 auto 2% auto;
+    
+        input, button {
+            padding: 10px;
+            border: none;
+            box-shadow: 0 0 2px 2px rgb(236, 231, 231);
+            border-radius: 5px;
+            margin: 5px;
+            transition: width 0.4s ease-in-out;
+        }
+    
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 3px 2px #054280;
+        }
+    
+        button {
+            background-color: rgb(83, 131, 163);
+            color: white;
+        }
+    
+        button:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+    }
+    
+    
+}
+
+

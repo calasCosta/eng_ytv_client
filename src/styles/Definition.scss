@@ -1,0 +1,26 @@
+h2 {
+    text-align: center;
+    opacity: 0.5;
+}
+
+p {
+    margin: 5px;
+
+    .title-span{
+        opacity: 0.6;
+    }
+}
+
+.def {
+    max-height: 12vh;
+    overflow: auto;
+
+    p {
+        margin: 5px;
+    }
+}
+
+.stems-p {
+    max-height: 5vh;
+    overflow: auto;
+}

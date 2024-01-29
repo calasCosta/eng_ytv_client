@@ -1,0 +1,108 @@
+.video-section {
+    width: 90%;
+    min-height: 90vh;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position:relative;
+
+    .iframe-div {
+        width: 50%;
+        iframe {
+            width: 100%;
+            height: 50vh;
+            border-radius: 20px;
+        }
+    }
+
+    
+
+    .transcript-area {
+        width: 35%;
+        height: 80vh;
+        box-shadow: 0 0 10px 2px rgba(199, 194, 194, 0.555);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #transcript-div{
+            width: 90%;
+            height: 90%;
+            margin: auto;
+            overflow: auto;
+
+            .timeline{
+                background-color: #ecebeb;
+                padding: 4px;
+                border-radius: 6px;
+                z-index: -1;
+                margin-right: 10px;
+            }
+
+            .timeline:hover{
+                background-color: rgb(10, 223, 223);
+                cursor:pointer;
+            }
+
+            p{
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            p:hover {
+                background-color: rgba(230, 227, 227, 0.527);
+            }
+
+            .word:hover{
+                color: rgb(6, 189, 173);
+                cursor:pointer;
+            }
+        }
+
+    }
+
+    .meaning-div {
+        position:absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .video-section {
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        justify-content: start;
+        align-items: start;
+        
+        .iframe-div {
+            width: 100%;
+            margin-top: 0;
+
+            iframe {
+                width: 100%;
+                height: 30vh;
+                border-radius: 0;
+                margin: 0;
+            }
+        }
+
+        .transcript-area {
+            width: 100%;
+            height: 60vh;
+            border-radius: 0;
+            box-shadow: 0 0 0 0 none;
+        } 
+    }
+}
+
+

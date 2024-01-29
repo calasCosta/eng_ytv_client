@@ -1,0 +1,130 @@
+.add-expression-div {
+    background-color: white;
+    margin: auto !important;
+    text-align: center;
+    position: sticky;
+    top: 10vh;
+    z-index: 10;
+
+    form {
+        margin-left: 5%;
+    
+        input, button {
+            padding: 10px;
+            border-style: none;
+        }
+
+        input {
+            border-bottom: solid 1px rgb(146, 146, 146);
+        }
+
+        input:focus {
+            outline-style: none;
+            border-bottom: solid 1px rgb(22, 22, 22);
+        }
+    }
+
+    .meaning-div {
+        position:relative;
+        margin: auto;
+        background-color: aquamarine;
+        margin-top: 2%;
+    }
+}
+
+
+
+.sections {
+    width: 100%;
+    min-height: 40vh;
+    padding: 30px 0;
+
+    h1 {
+        opacity: 0.7;
+    }
+
+    .div-inside {
+        text-align: center;
+        width: 90%;
+        margin: auto;
+
+        .no-expression{
+            opacity: 0.3;
+            margin-top: 5%
+        }
+
+                
+        .expression-div {
+            width: 290px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgb(221, 221, 221);
+            padding: 10px;
+            text-align: left;
+            display: inline-block;
+            margin: 1%;
+
+            .meaning-container {
+
+                .recognition-div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .delete-expression-btn{
+                        padding:0;
+                        display:flex;
+                        align-items: center;
+                        background:none;
+                        border:none;
+                    }
+
+                    .delete-expression-btn:hover{
+                        color: red;
+                        cursor: pointer;
+                    }
+
+                    div{
+                        width: 60%;
+                        text-align: right;
+
+                        button {
+                            border-style: none;
+                            border-radius: 10px;
+                            padding: 10px;
+                            background-color: white;
+                            box-shadow: 0 0 4px 0.5px rgba(224, 221, 221, 0.466);
+                            cursor: pointer;
+                        }
+                
+                        button:hover {
+                            opacity: 0.6;
+                            transition: 0.3s;
+                        }
+                
+                        .known-btn {
+                            color: green;
+                        }
+                
+                        .unknown-btn {
+                            color: red;
+                        }
+                
+                        .to-know-btn {
+                            color: rgb(255, 166, 0)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.known-expressions-section {
+    background-color: white;
+}
+
+.unknown-expressions-section {
+    background-color: rgba(250, 85, 85, 0.11);
+}

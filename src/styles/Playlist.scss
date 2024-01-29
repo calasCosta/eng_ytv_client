@@ -1,0 +1,116 @@
+.videos-section {
+    width: 90%;
+    margin: auto;
+
+    .add-video {
+        width: fit-content;
+        height: fit-content;
+        font-size: 35px;
+        opacity: 0.9;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+    
+    .add-video:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .videos-container{
+        margin: 6% auto;
+        text-align: center;
+        
+        .video {
+            width: 320px;
+            height: 270px;
+            display: inline-block;
+            margin: 2%;
+            vertical-align: top;
+            text-align: left;
+            background-color: white;
+            border-radius: 10px;
+            font-size: 14px;
+            box-shadow: 0 0 10px 0 rgb(209, 209, 209);
+            position: relative;
+            
+            a{
+                text-decoration: none;
+                color: black;
+                
+                abbr {
+                    text-decoration: none;
+                }
+
+                .title{
+                    width: 95%;
+                    margin: 2px auto 2px auto;
+                    text-decoration: none;
+                }
+
+                .thumbnail {
+                    border-radius: 10px 10px 0 0;
+                }
+    
+                .bottom-div {
+                    width: 95%;
+                    height: 30px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin-right: auto;
+                    margin-left: auto;
+
+                    
+                    button {
+                        width: fit-content;
+                        height: fit-content;
+                        border-style: none;
+                        background: none;
+                        display: flex;
+                        align-items: center;
+                        transition: 0.3s;
+                        opacity: 0.4;
+                        padding: 0;
+                    }
+
+                    button:hover{
+                        opacity: 1;
+                        cursor: pointer;
+                        color: rgb(158, 74, 74);
+                    }
+    
+                    .time-ago {
+                        display: inline-block;
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+
+        .video:hover{
+            box-shadow: 0 0 10px 0 rgb(118, 120, 121);
+        }
+    }
+
+    .nothing-yet-to-show {
+        width: 80%;
+        height: 40vh;
+        box-shadow: 0 0 50px 10px rgb(227, 233, 233);
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        padding: 20px; 
+    }
+    
+}
+

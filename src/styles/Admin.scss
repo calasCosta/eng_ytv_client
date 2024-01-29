@@ -1,0 +1,82 @@
+.close-search-div {
+    text-align: center !important;
+
+    button {
+        width: 40px;
+        height: 40px;
+        padding: 12px;
+        border-radius: 50%;
+        border-style: none;
+        background-color: white;
+        opacity: 0.3;
+        box-shadow: 0 0 2px 0 rgb(160, 160, 160);
+        font-size: 16px;
+        transition: 0.5s;
+    }
+
+    button:hover {
+        box-shadow: 0 0 5px 0 rgb(128, 128, 128);
+        cursor: pointer;
+        color: red;
+    }
+}
+
+
+.admin-section {
+    width: 90%;
+    margin: auto;
+    //text-align: center;
+
+    .user-div {
+        background-color: white;
+        width: 300px;
+        min-height: 200px;
+        display: inline-block;
+        margin: 2%;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 0 rgb(224, 224, 224);
+        padding: 10px;
+        text-align: center;
+
+        .image-div {
+            position: relative;
+            width: fit-content;
+            margin: auto;
+
+            img{
+                border-radius: 50%;
+            }
+
+            .availability-div {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                margin-bottom: 5px;
+                margin-right: 5px;
+                background-color: white;
+
+                box-shadow: 0 0 0 2px rgb(247, 246, 246);
+            }
+        }
+
+        
+        .bottom-div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            button {
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        }
+    }
+}
+

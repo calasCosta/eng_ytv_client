@@ -1,0 +1,158 @@
+header {
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    box-shadow: 0 0 10px 0 rgb(238, 236, 236);
+    
+    .headerDiv {
+        height: inherit;
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            opacity: 0.8;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+        }
+
+        .menu {
+            min-width: 65%;
+            display: flex;
+            justify-content: right;
+            align-items: right;
+
+            a {
+                color: black;
+                text-decoration: none;
+                margin: 1%;
+                padding: 5px;
+                opacity: 0.8;
+            }
+
+            a:hover {
+                box-shadow: 0 0 3px rgb(202, 201, 201);
+                border-radius: 5px;
+            }
+
+            .auth-btn {
+                width: 80px;
+                box-shadow: 0 0 3px rgb(211, 201, 201);
+                margin-left: 2%;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                margin-right: 0;
+            }
+
+
+            div {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                gap:8px;
+                margin-left: 4%;
+
+                .log-out-btn:hover {
+                    border-radius: 20px !important;
+                    box-shadow: 0 0 3px rgb(221, 67, 67);
+                }
+            }
+            
+            .login-btn {
+                background-color: rgb(4, 0, 36);
+                color: rgb(202, 199, 199);
+            }
+
+            .login-btn:hover{
+                border-radius: 20px !important;
+                box-shadow: 0 0 0 2px rgb(49, 51, 51);
+            }
+
+
+        }
+
+        /*----- hamburger menu ----*/
+        .checkButton {
+            cursor: pointer;
+            display: none;
+
+            font-weight: bold;
+
+            #close-icon{
+                display: none;
+                font-size: 35px;
+            }
+            #hamburger-icon {
+                font-size: 35px;
+            }
+        }
+
+        #check{
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    header{
+        .headerDiv{    
+            .menu{
+                position: fixed;
+                width: 100%;
+                height: 90vh;
+                background: rgba(0, 0, 0, 0.990);
+                top: 10vh;
+                left: -115%;
+                transition: all .7s; 
+
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+        
+                a{
+                    padding: 10px;
+                    font-size: 14px;
+                    color: white;
+                }
+
+                .auth-btn {
+                    margin-right: 2%;
+                }
+
+                div {
+                    flex-direction: column;
+                    margin-left: 0;
+                }
+            }
+        
+            #check:checked ~ nav{
+                left: 0;
+            }
+    
+            #check:checked ~ .checkButton{
+                #close-icon {
+                    display: block;
+                }
+                #hamburger-icon {
+                    display: none;
+                }
+            }
+
+            .checkButton{
+                display: block;
+            }
+        }
+    }
+}

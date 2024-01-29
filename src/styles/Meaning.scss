@@ -1,0 +1,62 @@
+.meaning-div {
+    width: 290px;
+    min-height: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px 10px 20px 20px;
+    box-shadow: 0 0 10px  rgb(196, 192, 192);
+    padding: 1.5em;
+    text-align: left;
+    
+    
+    h2 {
+        text-align: center;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        box-shadow: 0 0 10px rgb(214, 206, 206);
+        padding: 5px 10px;
+    }
+
+    .close:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
+    .recognition-div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            margin-right: 2%;
+            border-style: none;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 0 4px 0.5px rgba(224, 221, 221, 0.466);
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .known-btn {
+            color: green;
+        }
+
+        .unknown-btn {
+            color: red;
+        }
+
+        .to-know-btn {
+            color: rgb(177, 144, 0);
+        }
+    }
+}

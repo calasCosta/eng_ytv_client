@@ -1,0 +1,57 @@
+.videos-found-section{
+    width: 90%;
+    height: fit-content;
+    margin: 6% auto;
+    text-align: center;
+    
+    
+    .video-found {
+        width: fit-content;
+        height: 300px;
+        display: inline-block;
+        margin: 3%;
+        vertical-align: top;
+        text-align: left;
+
+        .thumbnail {
+            border-radius: 20px;
+        }
+
+        .bottom-div {
+            width: 320px;
+            height: 80px;
+            padding: 1px;
+            display: flex;
+            justify-content: left;
+            align-items: start;
+            gap: 0.5em;
+
+            img{
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+            }
+
+            p {
+                padding: 0;
+                margin: 0;
+            }
+
+
+            .add-video-btn {
+                border-style: none;
+                color: rgb(75, 168, 255);
+                font-size: x-large;
+                background: none;
+                padding: 0;
+                
+                
+            }
+
+            .add-video-btn:hover{
+                cursor:pointer;
+            }
+        }
+    }
+}
+
