@@ -155,8 +155,8 @@ export default function Video() {
                                                                 className='word'
                                                                 key={id}
                                                                 onClick={()=> {
-                                                                    setExpression(word); 
                                                                     setDisplayMeaning("block");
+                                                                    setExpression(word);
                                                                 }}
                                                             > 
                                                                 {word + " "}

@@ -69,19 +69,20 @@ export default function Expressions() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        setDisplayMeaning("block")
+        
         setExpression(expressionRef.current.value);
+        setDisplayMeaning("block")
     };
 
     return (
         <div>
 
             <div className='add-expression-div'>
-                <form action="" onSubmit={handleSearch}>
+                <form action="" onSubmit={(e)=> handleSearch(e)} >
                     <input 
                         type="text" 
                         placeholder='add new expression/word' 
-                        ref={expressionRef}                        
+                        ref={expressionRef}                    
                         required
                     />
                     <button type='submit'> 

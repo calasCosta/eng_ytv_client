@@ -9,7 +9,7 @@ import { SlVolume2 } from "react-icons/sl";
 import { CgSmileNone } from "react-icons/cg";
 
 export default function Meaning(props) {
-    const[searchDefinition, setSearchDefinition] = useState([]);
+    const[searchDefinition, setSearchDefinition] = useState({});
     const[display, setDisplay] = useState(props.display);
     const{playlistId, videoId, playlistTitle, videoCode} = useParams();
     const[ result, setResult] = useState({});
@@ -20,36 +20,39 @@ export default function Meaning(props) {
         axios
             .get(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${props.expression}?key=${process.env.REACT_APP_MERRIAM_WEBSTER_KEY}`)
             .then(response => {
+
+                const defintion = response.data[0];
                 setSearchDefinition(response.data[0]);
                 
                 const expression ={ 
-                    expression: props.expression,
+                    expression: props.expression, 
             
-                    meaning: searchDefinition.shortdef && 
-                                searchDefinition.shortdef,
+                    meaning: defintion.shortdef && 
+                    defintion.shortdef,
             
-                    fl: searchDefinition.fl,
+                    fl: defintion.fl,
             
-                    prs: searchDefinition.hwi && 
-                            searchDefinition.hwi.prs &&
-                                searchDefinition.hwi.prs[0].mw,
+                    prs: defintion.hwi && 
+                    defintion.hwi.prs &&
+                    defintion.hwi.prs[0].mw,
             
-                    audioName: searchDefinition.hwi && 
-                                searchDefinition.hwi.prs &&
-                                    searchDefinition.hwi.prs[0].sound.audio,
+                    audioName: defintion.hwi && 
+                    defintion.hwi.prs &&
+                    defintion.hwi.prs[0].sound.audio,
             
-                    stems: searchDefinition.meta.stems && 
-                                searchDefinition.meta.stems,
+                    stems: defintion.meta.stems && 
+                    defintion.meta.stems,
             
                     userId: getProfile().user_id
                 }
                 setResult(expression)
                 setDisplay(props.display)
-                console.log(response);
+                console.log('Result:', result); // Log result for debugging
+                console.log('Meaning:', result.meaning); // Log meaning for debugging
             })
             .catch(error => console.log(error));
            
-    }, [getProfile, props.display, props.expression, searchDefinition.fl]);
+    }, [getProfile, props.display, props.expression]);
 
 
     const handleAddExpression = (recognitionLevel) => {
@@ -93,7 +96,7 @@ export default function Meaning(props) {
             </h2>
 
             {
-                (result && result.meaning) ? (<>
+                (result.hasOwnProperty('meaning') && result.meaning.length > 0) ? (<>
                     <p style={{opacity: 0.4}}> Meaning: </p>
 
                     {
