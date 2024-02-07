@@ -6,6 +6,7 @@ import YouTube from "react-youtube";
 import Meaning from '../components/Meaning';
 import LoadingBar from '../components/Loading';
 import { useAuth } from '../components/auth/AuthContext';
+import ChatComponent from '../components/chatGPT/ChatComponent';
 
 export default function Video() {
     const { isLoggedIn } = useAuth();
@@ -85,7 +86,7 @@ export default function Video() {
             paragraph
                 .scrollIntoView({
                     behavior: 'smooth',
-                    block: 'nearest',  // prevent the parent div to scroll
+                    block: 'start',  // prevent the parent div to scroll
                 });
             
             let previous = paragraph.previousElementSibling;
@@ -117,8 +118,11 @@ export default function Video() {
                             }}
                             onStateChange={onPlayerStateChange}
                             onReady={(e) => iframeRef.current = e.target}
-                            
                         />
+
+                        <div className='ai-chat-div'>
+                            AI
+                        </div>
                     </div>
 
                     <Meaning 
