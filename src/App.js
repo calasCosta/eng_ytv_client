@@ -7,6 +7,7 @@ import PlaylistScreen from './view/PlaylistScreen';
 import SearchVideoScreen from './view/SearchVideoScreen';
 import Video from './view/Video';
 import Expressions from './view/Expressions';
+import RecognitionLevel from './view/RecognitionLevel';
 import About from './view/About';
 import Header from './components/Header';
 import NotFound from './view/NotFound';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/playlist/:playlistId/:playlistTitle/addVideo" element={ <SearchVideoScreen />} />
           <Route path="/playlist/:playlistId/:playlistTitle/:videoId/:videoCode" element={ <Video />} />
           <Route path="/expressions" element={ <Expressions />} />
+          <Route path="/expressions/:recognitionLevelId/:recognitionLevel" element={<RecognitionLevel />} />
           <Route path='/about' element={ <About />} />
           <Route path="/notFound" element={ <NotFound />} />
           <Route path="/admin" element={ <Admin />} />

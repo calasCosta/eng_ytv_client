@@ -1,127 +1,55 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom'
 import { useAuth } from '../components/auth/AuthContext';
 import '../styles/Expressions.scss'
-import axios from 'axios';
-import Expression from '../components/Expression';
 import Footer from '../components/Footer';
-import Meaning from '../components/Meaning';
-import { PiMagnifyingGlassThin } from "react-icons/pi";
 
-const ExpressionSection = (props) => {
-    const[filteredExpressions, setFilteredExpressions] = useState([]);
 
-    useEffect(() => {
-       
-        setFilteredExpressions(props.expressions 
-                                    && props.expressions.filter(expression => expression.state_id === 1 
-                                    && expression.recognition_level_id === props.recognitionLEvel)
-                                );
 
-    }, [props.expressions, props.recognitionLEvel])
-
-    
-    return(
-        <div className='div-inside'>
-            <h1> {props.title}  ({filteredExpressions && filteredExpressions.length}) </h1>
-            
-            {
-                filteredExpressions &&
-                    filteredExpressions
-                    .map(exp => 
-                        <Expression 
-                            key={exp.expression_id}
-                            expressionId={exp.expression_id}
-                            expression={exp.expression}
-                            shortdef={exp.def.meaning}
-                            prs={exp.def.prs && exp.def.prs}
-                            audioName={exp.def.audioName && exp.def.audioName}
-                            fl={exp.def.fl && exp.def.fl}
-                            stems={exp.def.stems && exp.def.stems}
-                            recognitionLevel={exp.recognition_level_id}
-                            setExpressions={props.updateExpressions}
-                        />
-                    )
-            }
+const RecognitionLevel = (props)=>{
+    return (
+        <div style={{ backgroundColor:`${props.backgroundColor}`}}>
+            <Link to={`/expressions/${props.recognitionLevelId}/${props.recognitionLevel}`}>
+                <h2>{props.recognitionLevel}</h2>
+                <p>{props.total}</p>
+            </Link>
         </div>
-    ); 
-};
+    );
+}
 
 export default function Expressions() {
-    const { isLoggedIn, getProfile } = useAuth();
-    const[expressions, setExpressions] = useState([]);
-    const[expression, setExpression] = useState("");
-    const[displayMeaning, setDisplayMeaning] = useState("none"); 
-    const expressionRef = useRef();
-
+    const { isLoggedIn } = useAuth();
+    
     if (!isLoggedIn() ) {
         window.location.href = "/notFound";
     }
 
-    useEffect(() => {
-        axios.get(process.env.REACT_APP_BACKEND_LOCALHOST + `/expressions/${getProfile().user_id}`)
-             .then(response => {setExpressions(response.data); console.log(response.data)})
-             .catch(console.log);
-    },[])
-
-    const updateExpressions = (newList) => {
-        setExpressions(newList);
-    }
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-        
-        setExpression(expressionRef.current.value);
-        setDisplayMeaning("block")
-    };
-
     return (
         <div>
+            <h2>Recognition Levels </h2>
+            <p className="total-of-expression">Total of expression: {60}</p>
 
-            <div className='add-expression-div'>
-                <form action="" onSubmit={(e)=> handleSearch(e)} >
-                    <input 
-                        type="text" 
-                        placeholder='add new expression/word' 
-                        ref={expressionRef}                    
-                        required
-                    />
-                    <button type='submit'> 
-                        <PiMagnifyingGlassThin/>
-                    </button>
-                </form>
-
-                <Meaning 
-                    expression={expression}
-                    display={displayMeaning}
-                    updateExpressions={updateExpressions}
+            <section className="recognition-levels">
+                <RecognitionLevel 
+                    backgroundColor={"rgb(194, 255, 242)"}
+                    recognitionLevel={"Known Expressions"}
+                    recognitionLevelId={1}
+                    total={10}
                 />
-            </div>
 
-            <section className='known-expressions-section sections'>     
-                    <ExpressionSection 
-                        title={"Known Expressions"}
-                        expressions={expressions}
-                        recognitionLEvel={1}
-                        updateExpressions={updateExpressions}
-                    />
-            </section>
-            
-            <section className='unknown-expressions-section sections'>
-                    <ExpressionSection 
-                        title={"UnKnown Expressions"}
-                        expressions={expressions}
-                        recognitionLEvel={2}
-                        updateExpressions={updateExpressions}
-                    />
-            </section>
-            
-            <section className='to-know-expressions-section sections'>
-                    <ExpressionSection 
-                        title={"Expressions to know"}
-                        expressions={expressions}
-                        recognitionLEvel={3}
-                        updateExpressions={updateExpressions}
-                    />
+                <RecognitionLevel 
+                    backgroundColor={"rgba(255, 186, 186, 0.466)"}
+                    recognitionLevel={"Unknown Expressions"}
+                    recognitionLevelId={2}
+                    total={20}
+                />
+
+                <RecognitionLevel 
+                    backgroundColor={"rgb(255, 249, 216, 0.541)"}
+                    recognitionLevel={"To Know Expressions"}
+                    recognitionLevelId={3}
+                    total={30}
+                />
             </section>
             
             <Footer /> 
