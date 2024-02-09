@@ -46,7 +46,7 @@ export default function RecognitionLevel() {
 
   const filterExpressions = ()=>{
       return expressions
-              .filter(exp => exp.state_id === 1 && exp.recognition_level_id === parseInt(recognitionLevelId));
+              .filter(exp => exp.recognition_level_id === parseInt(recognitionLevelId));
   }
 
   return (
