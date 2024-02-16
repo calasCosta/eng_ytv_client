@@ -27,6 +27,9 @@ function Video(props) {
                 <button onClick={props.handleDeleteVideo}>
                   <FaTrash/>
                 </button>
+                {
+                  props.duration && <p> {props.duration} </p>
+                }
                 <p className='time-ago'> {props.addedAt} </p>
             </div>
         </Link>
@@ -78,7 +81,8 @@ export default function PlaylistScreen() {
             ( videos.map((v) =>
                   <Video 
                     key={v.video_id}
-                    title={v.video_title}
+                    title={v.video_title}a
+                    duration={v.duration}
                     src={v.thumbnail}
                     pathname={pathname}
                     video_id = {v.video_id}

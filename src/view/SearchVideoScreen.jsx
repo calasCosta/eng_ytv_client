@@ -16,22 +16,59 @@ export default function SearchVideoScreen() {
     //const[submitBtnClicked, setSubmitBtnClicked] = useState(false);
 
     const {getProfile} = useAuth();
-
-    const handleSearch = (event, submitBtnClicked)=> {
-
-        if(event.key === 'Enter' || submitBtnClicked) {
-            let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${keyWord}&type=video&key=${process.env.REACT_APP_YT_KEY}`;
-            axios.get(url)
-                .then((r) => {
-                    console.log(r.data.items); setResults([...r.data.items])
-                })
-                .catch(err => console.error(err))
-            
+    const handleSearch = async (event, submitBtnClicked) => {
+        if (event.key === 'Enter' || submitBtnClicked) {
+            try {
+                const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${keyWord}&type=video&key=${process.env.REACT_APP_YT_KEY}`;
+                const response = await axios.get(url);
+                const searchResults = response.data.items;
+    
+                const requests = searchResults.map(async (item) => {
+                    const videoId = item.id.videoId;
+                    const videoUrl = `https://youtube.googleapis.com/youtube/v3/videos?id=${videoId}&key=${process.env.REACT_APP_YT_KEY}&part=contentDetails`;
+                    const videoResponse = await axios.get(videoUrl);
+                    const duration = videoResponse.data.items[0].contentDetails.duration;
+                    const totalSeconds = parseYouTubeDuration(duration);
+                    const formattedDuration = formatDuration(totalSeconds);
+                    item.duration = formattedDuration;
+                    return item;
+                });
+    
+                const updatedResults = await Promise.all(requests);
+                setResults(updatedResults);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+    
             setKeyWord("");
         }
+    };
+    
+    // Function to parse YouTube video duration into seconds
+    function parseYouTubeDuration(duration) {
+        const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+      
+        const hours = (parseInt(match[1]) || 0);
+        const minutes = (parseInt(match[2]) || 0);
+        const seconds = (parseInt(match[3]) || 0);
+      
+        return hours * 3600 + minutes * 60 + seconds;
+    }
+      
+    // Function to format duration into HH:MM:SS format (optional)
+    function formatDuration(totalSeconds) {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        if(hours > 0){
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    const handleAddVideo = (videoTitle, yt_video_code, thumbnailLink)=> {
+    const handleAddVideo = (videoTitle, yt_video_code, thumbnailLink, duration)=> {
 
         let dataObject = {
             videoTitle: videoTitle,
@@ -40,7 +77,8 @@ export default function SearchVideoScreen() {
             playlistId: playlistId,
             userId: getProfile().user_id,
             yt_video_code: yt_video_code,
-            thumbnail: thumbnailLink
+            thumbnail: thumbnailLink,
+            duration: duration
         }
 
         console.log(dataObject);
@@ -68,12 +106,15 @@ export default function SearchVideoScreen() {
                             key={index}
                             title={result.snippet.title}
                             src={result.snippet.thumbnails.medium.url}
+                            duration={result.duration} 
                             channelId={result.snippet.channelId}
                             handleAddVideo={()=> handleAddVideo(
                                                 result.snippet.title,
                                                 result.id.videoId,
-                                                result.snippet.thumbnails.medium.url
+                                                result.snippet.thumbnails.medium.url,
+                                                result.duration
                                             )}
+
                         />
                     )
                 }
@@ -106,16 +147,23 @@ function VideoFound(props) {
                  <img src={props.src} alt="" className='thumbnail' />
             </abbr>
             
-            <div className='bottom-div'>
-                <img src="" alt="thumbnail" />
-                <div>
-                    <p>
-                        {props.title}
-                    </p>
-                    <button className='add-video-btn' onClick={props.handleAddVideo}>
-                        <TbPlaylistAdd />
-                    </button>
-                </div>
+            <div className='title-channelprofile-div'>
+                <img src="" alt="channel" />
+                <p>
+                    {props.title}
+                </p>
+            </div>
+            <div className='bottom-div'> 
+                <button 
+                    className='add-video-btn' 
+                    onClick={props.handleAddVideo}
+                >
+                    <TbPlaylistAdd />
+                </button>
+
+                {
+                    props.duration && <p>{props.duration}</p>
+                }
             </div>
         </article>
     );
