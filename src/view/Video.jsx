@@ -7,6 +7,7 @@ import Meaning from '../components/Meaning';
 import LoadingBar from '../components/Loading';
 import { useAuth } from '../components/auth/AuthContext';
 import ChatComponent from '../components/chatGPT/ChatComponent';
+import { convertOffsetToTime } from '../components/TimeHandler';
 
 export default function Video() {
     const { isLoggedIn } = useAuth();
@@ -29,7 +30,7 @@ export default function Video() {
         axios.get(process.env.REACT_APP_BACKEND_LOCALHOST + pathname)
         .then((r) => {
             setTranscript(r.data);
-            //console.log(r.data)
+            //console.log("Heeerreeee for transcript:::::"+r.data)
             setLoadingBar(false);
         })
         .catch(err => {
@@ -38,7 +39,7 @@ export default function Video() {
         });
     }, []);
     
-    let date = new Date();
+    
 
     const removeHourDigits = (time)=>{
         let split = time.split(":");
@@ -51,8 +52,9 @@ export default function Video() {
     }
 
     const offsetToLocalTimeString = (offset)=>{
-        date.setTime(offset);
-        return removeHourDigits(date.toLocaleTimeString());
+        //console.log("Offset::::::: " + offset);
+        let date = convertOffsetToTime(offset);
+        return removeHourDigits(date);
     }
 
     
@@ -96,9 +98,9 @@ export default function Video() {
         }
     }
 
-    const seekToTime = (timeInMilliSeconds) => {
+    const seekTime = (timeInMilliSeconds) => {
         console.log(timeInMilliSeconds);
-        iframeRef.current.seekTo(parseInt(timeInMilliSeconds)/1000, true);
+        iframeRef.current.seekTo(timeInMilliSeconds, true);
     };
 
     return ( <>
@@ -139,7 +141,9 @@ export default function Video() {
                         ) : ( <>
                             <div id="transcript-div">
                                 {
-                                    transcript && transcript.map((l, index) => 
+                                    (transcript && transcript.length) ? (
+                                        
+                                        transcript.map((l, index) => 
 
                                         <p 
                                             key={index} 
@@ -147,12 +151,12 @@ export default function Video() {
                                         > 
                                             <span 
                                                 className='timeline' 
-                                                onClick={()=> seekToTime(l.offset)}>
+                                                onClick={()=> seekTime(l.offset)}>
                                                 {offsetToLocalTimeString(l.offset)}
                                             </span> 
 
                                             {
-                                                l.text
+                                                l.text && l.text
                                                     .split(" ")
                                                     .map((word, id) =>  
                                                             <span 
@@ -167,6 +171,9 @@ export default function Video() {
                                                             </span>)
                                             }
                                         </p>)
+                                    ):(
+                                        <p>Sorry! No transcript found.</p>
+                                    )
                                 }
                             </div>
                         </>) 

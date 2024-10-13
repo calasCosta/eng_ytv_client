@@ -36,8 +36,12 @@ export default function Header() {
           
           {
             isLoggedIn() &&
-            <Link to="/expressions" onClick={handleClick}> Expressions </Link>
+            <Link to="/expressions" onClick={handleClick}> Lists </Link>
           }
+
+          <Link to="" onClick={handleClick}>Grammar</Link>
+
+          <Link to="" onClick={handleClick}>Dictionary</Link>
 
           <Link to="/about" onClick={handleClick}> About </Link>
 

@@ -1,5 +1,5 @@
 
-export default function timeAgo(dateString) {
+ function timeAgo(dateString) {
     const currentDate = new Date();
     const previousDate = new Date(dateString);
   
@@ -19,3 +19,19 @@ export default function timeAgo(dateString) {
       return 'Just now';
     }
   };
+
+
+function convertOffsetToTime(offsetInSeconds) {
+    let hours = Math.floor(offsetInSeconds / 3600);
+    let minutes = Math.floor((offsetInSeconds % 3600) / 60);
+    let seconds = parseInt( offsetInSeconds % 60);
+
+    // Formatting the output to be 2 digits (e.g. 01:05:09)
+    hours = String(hours).padStart(2, '0');
+    minutes = String(minutes).padStart(2, '0');
+    seconds = String(seconds).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+export { timeAgo, convertOffsetToTime }

@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import axios from 'axios';
 import '../styles/Admin.scss';
 import { useAuth } from '../components/auth/AuthContext';
-import timeAgo from '../components/timeAgo'
+import {timeAgo} from '../components/TimeHandler'
 
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { FaTrash } from "react-icons/fa";
 import Footer from '../components/Footer';
 import { useAuth } from '../components/auth/AuthContext';
-import timeAgo from '../components/timeAgo';
+import {timeAgo} from '../components/TimeHandler';
 
 function Video(props) {
 
@@ -28,7 +28,7 @@ function Video(props) {
                   <FaTrash/>
                 </button>
                 {
-                  props.duration && <p> {props.duration} </p>
+                  props.duration && <p className='time-ago'> {props.duration} </p>
                 }
                 <p className='time-ago'> {props.addedAt} </p>
             </div>
