@@ -7,6 +7,7 @@ import { FaTrash } from "react-icons/fa";
 import Footer from '../components/Footer';
 import { useAuth } from '../components/auth/AuthContext';
 import {timeAgo} from '../components/TimeHandler';
+import he from 'he';
 
 function Video(props) {
 
@@ -20,7 +21,7 @@ function Video(props) {
             />
             <abbr  title={props.title && props.title}>
               <p className='title'>
-                {props.title && (props.title.length < 75) ? props.title : props.title.substring(0, 75) +"..." } 
+                {props.title && (props.title.length < 75) ? he.decode(props.title) : he.decode(props.title.substring(0, 75)) +"..." } 
               </p> 
             </abbr>
             <div className='bottom-div'>
