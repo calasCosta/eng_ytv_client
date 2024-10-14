@@ -8,6 +8,7 @@ import LoadingBar from '../components/Loading';
 import { useAuth } from '../components/auth/AuthContext';
 import ChatComponent from '../components/chatGPT/ChatComponent';
 import { convertOffsetToTime } from '../components/TimeHandler';
+import he from 'he'
 
 export default function Video() {
     const { isLoggedIn } = useAuth();
@@ -156,7 +157,7 @@ export default function Video() {
                                             </span> 
 
                                             {
-                                                l.text && l.text
+                                                l.text && he.decode(l.text)
                                                     .split(" ")
                                                     .map((word, id) =>  
                                                             <span 
@@ -166,9 +167,9 @@ export default function Video() {
                                                                     setDisplayMeaning("block");
                                                                     setExpression(word);
                                                                 }}
-                                                            > 
-                                                                {word + " "}
-                                                            </span>)
+                                                                dangerouslySetInnerHTML={{ __html: word +" "}} //decode words
+                                                            /> 
+                                                    )
                                             }
                                         </p>)
                                     ):(
