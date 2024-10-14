@@ -41,7 +41,7 @@ export default function Header() {
 
           <Link to="" onClick={handleClick}>Grammar</Link>
 
-          <Link to="" onClick={handleClick}>Dictionary</Link>
+          <Link to="/dictionary" onClick={handleClick}>Dictionary</Link>
 
           <Link to="/about" onClick={handleClick}> About </Link>
 

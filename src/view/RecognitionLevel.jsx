@@ -1,11 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useAuth } from '../components/auth/AuthContext';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer'
 import Expression from '../components/Expression';
 import axios from 'axios';
-import Meaning from '../components/Meaning';
-import { PiMagnifyingGlassThin } from "react-icons/pi";
+
 
 import '../styles/RecognitionLevel.scss';
 
@@ -20,9 +19,7 @@ export default function RecognitionLevel() {
   const {recognitionLevelId, recognitionLevel} = useParams();
   const[expressions, setExpressions] = useState([]);
   
-  const[expression, setExpression] = useState("");
-  const[displayMeaning, setDisplayMeaning] = useState("none"); 
-  const expressionRef = useRef();
+
 
   useEffect(() => {
       axios.get(process.env.REACT_APP_BACKEND_LOCALHOST + `/expressions/${getProfile().user_id}`)
@@ -37,12 +34,7 @@ export default function RecognitionLevel() {
     setExpressions(newList);
   }
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    
-    setExpression(expressionRef.current.value);
-    setDisplayMeaning("block")
-  };
+  
 
   const filterExpressions = ()=>{
       return expressions
@@ -54,25 +46,6 @@ export default function RecognitionLevel() {
 
       <h2> {recognitionLevel} <span> ({filterExpressions().length}) </span> </h2>
   
-      <div className='add-expression-div'>
-          <form action="" onSubmit={(e)=> handleSearch(e)} >
-              <input 
-                  type="text" 
-                  placeholder='add new expression/word' 
-                  ref={expressionRef}                    
-                  required
-              />
-              <button type='submit'> 
-                  <PiMagnifyingGlassThin/>
-              </button>
-          </form>
-
-          <Meaning 
-              expression={expression}
-              display={displayMeaning}
-              updateExpressions={updateExpressions}
-          />
-      </div>
 
       <section className='expressions-section'>
         {

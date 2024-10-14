@@ -43,7 +43,7 @@ export default function Expressions() {
 
     return (
         <div>
-            <h2>Recognition Levels </h2>
+            <h2>My Expressions </h2>
             <p className="total-of-expression">Total of expression: {expressions.length}</p>
 
             <section className="recognition-levels">

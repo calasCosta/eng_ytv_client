@@ -59,8 +59,7 @@ export default function Meaning(props) {
             .post(process.env.REACT_APP_BACKEND_LOCALHOST + `/playlist/${playlistId}/${playlistTitle}/${videoId}/${videoCode}/addExpression`, {   
                 searchResult: meaning
             })
-            .then( response => {
-                props.updateExpressions(response.data)            
+            .then( response => {         
                 toast.success( "Expression added successfully", {
                     position: toast.POSITION.BOTTOM_LEFT,
                 })
@@ -73,7 +72,7 @@ export default function Meaning(props) {
 
 
     return (
-        <div className='meaning-div' style={{display: `${display}`}}>
+        <div className='meaning-div' style={{display: `${display}`, position:'relative'}}>
             <p 
                 style={{ textAlign: 'center', opacity:0.4 }}
             > 
@@ -96,7 +95,6 @@ export default function Meaning(props) {
             }
 
             {
-                
                 (Object.keys(result).length !== 0 && result.meaning && result.meaning.length > 0) ? (
                     <>
                         <p style={{opacity: 0.4}}> Meaning: </p>

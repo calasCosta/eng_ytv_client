@@ -57,29 +57,10 @@ export default function Video() {
         return removeHourDigits(date);
     }
 
-    
-    const onPlayerStateChange = (event) => {
-        const playerState = event.data;
-
-        if (playerState === 1) {
-            // Video is playing, so start updating the current time
-            const intervalId =  setInterval(() => {
-                const newTime = event.target.getCurrentTime();
-
-                moveTo(offsetToLocalTimeString(newTime*1000));
-
-            }, 1000); // Update every second
-
-            // Save the interval ID to clear it when the video stops
-            setCurrentInterval(intervalId);
-        } else {
-            // Video is not playing, so clear the interval
-            clearInterval(currentInterval);
-        }
-    };
-
     const moveTo = (id)=>{
         let paragraph = document.getElementById(id);
+
+        //console.log(id);
 
         if(paragraph){
             //console.log("Current:::", document.getElementById(id));
@@ -98,6 +79,25 @@ export default function Video() {
         }
     }
 
+    const onPlayerStateChange = (event) => {
+        const playerState = event.data;
+
+        if (playerState === 1) {
+            // Video is playing, so start updating the current time
+            const intervalId =  setInterval(() => {
+                const newTime = event.target.getCurrentTime();  
+                moveTo(offsetToLocalTimeString(newTime));
+
+            }, 1000); // Update every second
+
+            // Save the interval ID to clear it when the video stops
+            setCurrentInterval(intervalId);
+        } else {
+            // Video is not playing, so clear the interval
+            clearInterval(currentInterval);
+        }
+    };
+    
     const seekTime = (timeInMilliSeconds) => {
         console.log(timeInMilliSeconds);
         iframeRef.current.seekTo(timeInMilliSeconds, true);

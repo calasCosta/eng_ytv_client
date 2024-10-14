@@ -12,6 +12,7 @@ import About from './view/About';
 import Header from './components/Header';
 import NotFound from './view/NotFound';
 import Admin from './view/AdminScreen'; 
+import Dictionary from './view/Dictionary';
 import { AuthProvider } from './components/auth/AuthContext';
 import { ToastContainer } from "react-toastify";
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/about' element={ <About />} />
           <Route path="/notFound" element={ <NotFound />} />
           <Route path="/admin" element={ <Admin />} />
+          <Route path="/dictionary" element={<Dictionary/>} />
         </Routes>   
         <ToastContainer />
       </BrowserRouter>
