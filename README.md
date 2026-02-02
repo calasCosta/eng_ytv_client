@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Project Objectives and Contributions (2023 Version)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The developed project aims to create a full-stack web application whose main objective is to provide a platform for studying the English language through YouTube videos. The application will allow users to:
 
-## Available Scripts
+## Core Features
+- **View video transcript** during video playback
+- **Click on a word** to see its meaning and definition
+- **Add words/expressions** with their meanings and optional user-written notes, categorising them into one of three recognition levels:
+  - "Known"
+  - "Almost Known"
+  - "Unknown"
+- **Move words/expressions** between different recognition levels
+- **Create video playlists** for organized study sessions
+- **Play flashcards** with previously added words/expressions
+  - Flashcards are cards used to allow users to self-assess their knowledge of previously added expressions/words. Each flashcard contains a word on the front and its meaning on the back.
+  - They are used in a quiz format, where users try to guess the meanings of expressions presented to them (i.e., recall what's on the back of the flashcard based on the shown expression) and subsequently self-assess by choosing the appropriate recognition level for each word/expression.
+- **View "Word of the Day"** presented every 24 hours
+- **Interact with other system users** through a chat feature that enables communication between connected users
 
-In the project directory, you can run:
+## Educational Value
+This application combines multimedia content consumption with active vocabulary building and social learning, creating an immersive English language learning experience through authentic video content and interactive study tools.
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- **React.js** - Frontend development framework for building user interfaces
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+- **Node.js/Express.js** - Server creation and management using RESTful API methodology
 
-### `npm test`
+### Database
+- **MySQL** - Relational database for data persistence
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### APIs & External Services
+- **YouTube API** - Consuming YouTube video data and metadata
+- **Merriam-Webster API** - Accessing dictionary definitions and word meanings
+- **Deepgram API** - Speech-to-text service for obtaining video transcripts
+- **React Google Login** - OAuth integration for user registration and authentication
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Architecture
+- **RESTful API** - Communication between frontend and backend
+- **Client-Server Model** - Traditional web application architecture
 
 ### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
