@@ -40,5 +40,3 @@ This application combines multimedia content consumption with active vocabulary 
 ### Architecture
 - **RESTful API** - Communication between frontend and backend
 - **Client-Server Model** - Traditional web application architecture
-
-### `npm run build` fails to minify
